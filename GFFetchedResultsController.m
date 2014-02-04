@@ -102,7 +102,7 @@
 	if (_sectionObjects) {
 		idx = [_sectionObjects indexOfObject:obj];
 	} else {
-		idx = [[_controller fetchedObjects] indexOfObject:obj inRange:NSMakeRange(self.sectionOffset, 0)];
+		idx = [[_controller fetchedObjects] indexOfObject:obj inRange:NSMakeRange(self.sectionOffset, self.numberOfObjects)];
 		if (idx != NSNotFound) {
 			idx = idx - 0; // ??
 		}
