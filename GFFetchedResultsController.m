@@ -442,7 +442,7 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 				NSMutableDictionary *infoCopy = [info mutableCopy];
 				NSManagedObject *object = info[kContentChangeObjectKey];
 				NSUInteger newIndex = [self _indexOfFetchedID:[object objectID]];
-				infoCopy[kContentChangeNewIndexPathKey] = @(newIndex);
+				infoCopy[kContentChangeNewIndexPathKey] = [self _indexPathForIndex:newIndex];
 				[insertsInfoCopy addObject:infoCopy];
 			}
 			
@@ -456,12 +456,10 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 			
 			for (NSDictionary *info in updatesInfo) {
 				NSManagedObject *object = info[kContentChangeObjectKey];
-				NSUInteger newIndex = [self _indexOfFetchedID:[object objectID]];
 				GFFetchedResultsChangeType changeType = [info[kContentChangeUpdateTypeKey] unsignedIntegerValue];
 				
 				NSIndexPath *oldIndexPath = info[kContentChangeOldIndexPathKey];
-				NSUInteger newIndexes[2] = {0, newIndex};
-				NSIndexPath *newIndexPath = [NSIndexPath indexPathWithIndexes:newIndexes length:2];
+				NSIndexPath *newIndexPath = [self indexPathForObject:object];
 				
 				if (changeType == GFFetchedResultsChangeMove) {
 					[self.delegate controller:self didChangeObject:object atIndexPath:oldIndexPath forChangeType:changeType newIndexPath:newIndexPath];
