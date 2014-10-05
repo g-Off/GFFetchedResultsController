@@ -5,7 +5,7 @@
 //  Copyright (c) 2013 Geoffrey Foster. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 @class GFFetchedResultsController;
 
@@ -108,6 +108,8 @@ typedef NS_ENUM(NSUInteger, GFFetchedResultsChangeType) {
 - (NSIndexPath *)indexPathForObject:(id)object __attribute__((nonnull(1)));
 
 - (NSUInteger)numberOfObjects;
+
+- (NSString *)sectionIndexTitleForSectionName:(NSString *)sectionName;
 
 #if defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
 - (NSIndexPath *)indexPathForTableViewIndex:(NSUInteger)idx;

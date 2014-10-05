@@ -11,8 +11,6 @@
 
 #import "GFFetchedResultsController.h"
 
-#import <CoreData/CoreData.h>
-
 @interface NSFetchRequest (GFEntityResolution)
 
 - (NSEntityDescription *)gf_resolvedEntityInContext:(NSManagedObjectContext *)ctx;
@@ -50,7 +48,7 @@
 @end
 
 @implementation _GFDefaultSectionInfo {
-	GFFetchedResultsController *_controller;
+	__weak GFFetchedResultsController *_controller;
 	NSArray *_sectionObjects;
 }
 
@@ -75,14 +73,6 @@
 	if (_controller && !_sectionObjects) {
 		NSArray *fetchedObjects = [_controller fetchedObjects];
 		_sectionObjects = [fetchedObjects subarrayWithRange:NSMakeRange(self.sectionOffset, self.numberOfObjects)];
-		//		if (self.sectionOffset == 0) {
-		//			NSUInteger count = [fetchedObjects count];
-		//			if (count != self.numberOfObjects) {
-		//
-		//			}
-		//		} else {
-		//
-		//		}
 	}
 	return _sectionObjects;
 }
