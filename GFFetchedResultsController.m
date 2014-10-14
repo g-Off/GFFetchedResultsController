@@ -239,7 +239,7 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 	
 	[_fetchRequest setReturnsObjectsAsFaults:returnsAsFaults];
 	
-	return (fetchError != nil);
+	return (fetchError == nil);
 }
 
 - (id)objectAtIndexPath:(NSIndexPath *)indexPath
