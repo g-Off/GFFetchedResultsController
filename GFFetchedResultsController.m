@@ -1085,6 +1085,7 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 }
 
 #if defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
+
 - (NSIndexPath *)indexPathForTableViewIndex:(NSUInteger)idx
 {
 	NSIndexPath *indexPath;
@@ -1126,6 +1127,16 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 	}
 	return numberOfRowsForTableView;
 }
+
+- (id)objectAtIndex:(NSUInteger)idx
+{
+	NSIndexPath *indexPath = [self indexPathForTableViewIndex:idx];
+	if (indexPath) {
+		return [self objectAtIndexPath:indexPath];
+	}
+	return nil;
+}
+
 #endif
 
 @end

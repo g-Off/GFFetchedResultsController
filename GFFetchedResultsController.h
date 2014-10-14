@@ -114,6 +114,7 @@ typedef NS_ENUM(NSUInteger, GFFetchedResultsChangeType) {
 #if defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
 - (NSIndexPath *)indexPathForTableViewIndex:(NSUInteger)idx;
 - (NSUInteger)numberOfRowsForTableView;
+- (id)objectAtIndex:(NSUInteger)idx;
 #endif
 
 @end
