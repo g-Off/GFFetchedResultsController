@@ -3,8 +3,8 @@ xcode_project: GFFetchedResultsControllerDemo/GFFetchedResultsControllerDemo.xco
 xcode_scheme: GFFetchedResultsControllerTests
 
 before_install:
-  - sudo easy_install cpp-coveralls
-  - export LANG=en_US.UTF-8
+	- sudo easy_install cpp-coveralls
+	- export LANG=en_US.UTF-8
 
 after_success:
-  - coveralls
+	- ./coveralls.rb --extension m --exclude-headers
