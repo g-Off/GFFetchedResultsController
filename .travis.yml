@@ -1,0 +1,10 @@
+language: objective-c
+xcode_project: GFFetchedResultsControllerDemo/GFFetchedResultsControllerDemo.xcodeproj
+xcode_scheme: GFFetchedResultsControllerTests
+
+before_install:
+  - sudo easy_install cpp-coveralls
+  - export LANG=en_US.UTF-8
+
+after_success:
+  - ./coveralls.rb --extension m --exclude-headers

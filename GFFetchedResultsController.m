@@ -466,9 +466,8 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 			}
 			
 			// TODO: hm?
-			for (NSString *sectionName in sectionsWithDeletes) {
-				
-			}
+			//for (NSString *sectionName in sectionsWithDeletes) {
+			//}
 			
 			for (_GFDefaultSectionInfo *section in [sectionsWithDeletes allValues]) {
 				if (_sectionsByName[section.name] == nil) {
