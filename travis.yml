@@ -1,0 +1,3 @@
+language: objective-c
+xcode_project: MyNewProject.xcodeproj
+xcode_sdk: iphonesimulator8.0
