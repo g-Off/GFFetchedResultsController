@@ -67,4 +67,15 @@
 	XCTAssertEqual(frc.fetchedObjects.count, 20);
 }
 
+- (void)testBasicPredicateFetch
+{
+	NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"DemoObject"];
+	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"age < 10"];
+	GFFetchedResultsController *frc = [[GFFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_ctx];
+	NSError *fetchError;
+	XCTAssertTrue([frc performFetch:&fetchError]);
+	XCTAssertNil(fetchError, @"%@", fetchError);
+	XCTAssertEqual(frc.fetchedObjects.count, 10);
+}
+
 @end
