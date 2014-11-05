@@ -33,7 +33,7 @@
 							  NSInferMappingModelAutomaticallyOption: @YES};
 	
 	NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-	_url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[NSUUID UUID].UUIDString]];
+	_url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[[NSUUID UUID] UUIDString]]];
 	NSError *error;
 	[psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:_url options:options error:&error];
 	

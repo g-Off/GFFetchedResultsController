@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/g-Off/GFFetchedResultsController.svg?branch=master)](https://travis-ci.org/g-Off/GFFetchedResultsController)
+[![Coverage Status](https://img.shields.io/coveralls/g-Off/GFFetchedResultsController.svg)](https://coveralls.io/r/g-Off/GFFetchedResultsController)
 
 GFFetchedResultsController
 ==========================
