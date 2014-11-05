@@ -1,4 +1,5 @@
 language: objective-c
 xcode_project: GFFetchedResultsControllerDemo/GFFetchedResultsControllerDemo.xcodeproj
-xcode_sdk: iphonesimulator8.0
 xcode_scheme: GFFetchedResultsControllerTests
+after_success:
+  - coveralls
