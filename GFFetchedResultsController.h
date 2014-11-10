@@ -115,6 +115,11 @@ typedef NS_ENUM(NSUInteger, GFFetchedResultsChangeType) {
 - (NSIndexPath *)indexPathForTableViewIndex:(NSUInteger)idx;
 - (NSUInteger)numberOfRowsForTableView;
 - (id)objectAtIndex:(NSUInteger)idx;
+- (BOOL)isSectionAtTableViewIndex:(NSUInteger)idx;
+- (id <GFFetchedResultsSectionInfo>)sectionAtTableViewIndex:(NSUInteger)idx;
+
+- (NSUInteger)tableViewRowAtIndexPath:(NSIndexPath *)indexPath;
+- (NSUInteger)tableViewRowAtSectionIndex:(NSUInteger)sectionIndex;
 #endif
 
 @end

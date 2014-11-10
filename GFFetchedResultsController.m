@@ -1136,6 +1136,43 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 	return nil;
 }
 
+- (BOOL)isSectionAtTableViewIndex:(NSUInteger)idx
+{
+	NSIndexPath *indexPath = [self indexPathForTableViewIndex:idx];
+	return ([indexPath indexAtPosition:1] == NSNotFound);
+}
+
+- (id <GFFetchedResultsSectionInfo>)sectionAtTableViewIndex:(NSUInteger)idx
+{
+	NSIndexPath *indexPath = [self indexPathForTableViewIndex:idx];
+	NSUInteger sectionIndex = [indexPath indexAtPosition:0];
+	return self.sections[sectionIndex];
+}
+
+- (NSUInteger)tableViewRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSUInteger idx = 0;
+	if (_flags._hasSections) {
+		NSUInteger sectionIndex = [indexPath indexAtPosition:0];
+		_GFDefaultSectionInfo *section = _sections[sectionIndex];
+		idx = section.sectionOffset + [indexPath indexAtPosition:1];
+	} else {
+		idx = [indexPath indexAtPosition:1];
+	}
+	return idx;
+}
+
+- (NSUInteger)tableViewRowAtSectionIndex:(NSUInteger)sectionIndex
+{
+	NSUInteger idx = 0;
+	if (_flags._hasSections) {
+		_GFDefaultSectionInfo *section = _sections[sectionIndex];
+		idx = section.sectionOffset;
+	} else {
+	}
+	return idx;
+}
+
 #endif
 
 @end
