@@ -740,8 +740,10 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 			if (![self _postprocessInsertedObjects:@[updateInfo]]) {
 				NSLog(@"CoreData: error: (UMFetchedRequestController) error moving object %@ to new location", changedObject);
 			}
-		} else {
-			
+		} else if ([changeType unsignedIntegerValue] == GFFetchedResultsChangeInsert) {
+			if (![self _postprocessInsertedObjects:@[updateInfo]]) {
+				NSLog(@"CoreData: error: (UMFetchedRequestController) error inserting object %@ to new location", changedObject);
+			}
 		}
 	}
 	
