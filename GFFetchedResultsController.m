@@ -94,7 +94,7 @@
 	} else {
 		idx = [[_controller fetchedObjects] indexOfObject:obj inRange:NSMakeRange(self.sectionOffset, self.numberOfObjects)];
 		if (idx != NSNotFound) {
-			idx = idx - 0; // ??
+			idx -= self.sectionOffset;
 		}
 	}
 	return idx;
@@ -1157,7 +1157,7 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 	if (_flags._hasSections) {
 		NSUInteger sectionIndex = [indexPath indexAtPosition:0];
 		_GFDefaultSectionInfo *section = _sections[sectionIndex];
-		idx = section.sectionOffset + [indexPath indexAtPosition:1];
+		idx = section.sectionOffset + [indexPath indexAtPosition:1] + sectionIndex;
 	} else {
 		idx = [indexPath indexAtPosition:1];
 	}
@@ -1169,7 +1169,7 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 	NSUInteger idx = 0;
 	if (_flags._hasSections) {
 		_GFDefaultSectionInfo *section = _sections[sectionIndex];
-		idx = section.sectionOffset;
+		idx = section.sectionOffset + section.sectionNumber;
 	} else {
 	}
 	return idx;
