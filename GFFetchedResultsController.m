@@ -371,7 +371,9 @@ static NSString *kContentChangeDidChangeSectionsKey = @"_ContentChange_didChange
 	}];
 	[self _preprocessUpdatedObjects:updated insertsInfo:insertsInfo deletesInfo:deletesInfo updatesInfo:updatesInfo sectionsWithDeletes:sectionsWithDeletes newSectionNames:newSectionNames treatAsRefreshes:NO];
 	
-	NSSet *refreshedObjects = [userInfo objectForKey:NSRefreshedObjectsKey];
+	NSSet *refreshedObjects = [userInfo[NSRefreshedObjectsKey] objectsPassingTest:^BOOL(NSManagedObject *obj, BOOL *stop) {
+		return [[obj entity] isEqual:entity];
+	}];
 	if (refreshedObjects) {
 		NSMutableSet *mutableRefreshedObjects = [[NSMutableSet alloc] initWithSet:refreshedObjects];
 		if (deleted) {
